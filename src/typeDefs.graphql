@@ -1,0 +1,39 @@
+scalar DateTime
+
+type PageInfo {
+  startCursor: DateTime
+  endCursor: DateTime
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+}
+
+union AOrB = A | B
+
+type A {
+  a: String!
+}
+
+type B {
+  b: String!
+}
+
+type Edge {
+  cursor: DateTime!
+  node: AOrB!
+}
+
+type Connection {
+  count: Int!
+  edges: [Edge!]!
+  pageInfo: PageInfo!
+}
+
+extend type Query {
+  paginated(
+    first: Int
+    last: Int
+    after: DateTime
+    before: DateTime
+  ): Connection!
+  simple(chatId: ID!, isGroup: Boolean!): AOrB
+}

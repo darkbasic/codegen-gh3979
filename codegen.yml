@@ -1,0 +1,16 @@
+overwrite: true
+schema: './src/typeDefs.graphql'
+documents: null
+generates:
+  ./src/types.ts:
+    plugins:
+      - add: '/* eslint-disable */'
+      - typescript
+      - typescript-resolvers
+    config:
+      mappers:
+        A: ./codegen#AMapped
+        B: ./codegen#BMapped
+        AOrB: ./codegen#AOrBMapped
+      scalars:
+        DateTime: Date

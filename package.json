@@ -1,0 +1,45 @@
+{
+  "name": "sports",
+  "version": "0.0.1",
+  "description": "",
+  "main": "build/src/index.js",
+  "types": "build/src/index.d.ts",
+  "files": [
+    "build/src"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [],
+  "scripts": {
+    "check": "gts check \"src/**/*.ts\"",
+    "clean": "gts clean",
+    "precompile": "yarn run clean && yarn run codegen && yarn run fix",
+    "compile": "tsc -p .",
+    "fix": "gts fix \"src/**/*.ts\"",
+    "prepare": "yarn run compile",
+    "codegen": "gql-gen"
+  },
+  "devDependencies": {
+    "@graphql-codegen/add": "^1.13.3",
+    "@graphql-codegen/cli": "^1.13.3",
+    "@graphql-codegen/introspection": "^1.13.3",
+    "@graphql-codegen/typescript": "^1.13.3",
+    "@graphql-codegen/typescript-resolvers": "^1.13.3",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.2",
+    "gts": "^2.0.0",
+    "jest": "^25.4.0",
+    "ts-jest": "^25.4.0",
+    "ts-node": "^8.9.0",
+    "typescript": "~3.8.3"
+  },
+  "dependencies": {
+    "graphql": "^14.6.0",
+    "graphql-scalars": "^1.1.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(ts)$": "<rootDir>/node_modules/ts-jest"
+    },
+    "preset": "ts-jest"
+  }
+}
